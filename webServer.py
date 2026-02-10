@@ -42,6 +42,8 @@ def webServer(port=13331):
             # Content-Type is an example on how to send a header as bytes. There are more!
             outputdata = b"HTTP/1.1 200 OK\r\n"
             outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+            outputdata += b"Server: Hello World!\r\n"
+            outputdata += b"Connection: close\r\n"
             outputdata += b"\r\n"
 
             # Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
@@ -66,6 +68,8 @@ def webServer(port=13331):
             message = b"<html><body><p>404 NOT FOUND<p><body><html>"
             outputdata = b"HTTP/1.1 404 NOT FOUND\r\n"
             outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+            outputdata += b"Server: Error Server\r\n"
+            outputdata += b"Connection: close\r\n"
             outputdata += b"\r\n"
 
             connectionSocket.send(outputdata + message)
